@@ -1,0 +1,258 @@
+.navbar {
+    box-shadow : 0 2px 0 #1391D1;
+    height: 3vh;
+    margin-bottom: 3px;
+    border-radius: 0;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0
+}
+
+.body {
+    padding: 0;
+}
+
+.main {
+    background-color: #F6F9FA;
+    height: 100vh;
+
+}
+
+.logo {
+    height: 7vh;
+    padding: 10px
+}
+
+.menu-item {
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.active {
+    background-color:  #F6F9FA;
+  }
+
+.menu-item:active, .menu-item:hover, .menu-item:focus {
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+    background-color:  #F6F9FA;
+    border: none
+}
+
+p {
+    outline: none
+}
+
+.text {
+    color: black;
+}
+
+.text-bold {
+    color: black;
+    font-weight: bold;
+}
+
+.header {
+    margin-top: 15px
+}
+
+.view {
+    display: none;
+}
+
+.current {
+    display: block;
+}
+
+.top {
+    padding-top: 20px
+}
+
+.active {
+    background-color:  #F6F9FA;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form {
+    padding-left: 15px;
+}
+
+input {
+    border-radius: 0;
+}
+
+.list {
+    padding: 0
+}
+
+.menu-item a:focus {     
+    background-color: #F6F9FA;
+    ;   
+}
+
+
+.hidden {
+    display: none;
+}
+
+.bar {
+    fill: #343434;
+    /* changes the background */
+    height: 28px;
+    stroke-width: 1;
+    stroke: rgb(0, 0, 0);
+    cursor: pointer;
+    font-family: Helvetica, sans-serif;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+.card {
+    width: 100%;
+    background-color: #ffffff;
+    height: 130px;
+}
+ h5 {
+     padding: 15px
+ }
+
+
+.container {
+    width: 1400px;
+}
+.person_vehicle {
+    fill: #a2c4f8;
+}
+
+.special_vehicle {
+    fill: #f8daa2;
+}
+
+.person_trip {
+    fill: #0066ff;
+}
+
+.special_trip {
+    fill: #ffa600;
+}
+
+.bar text {
+    color: black;
+}
+
+.person_picked_up {
+    fill: rgb(138, 187, 142);
+}
+
+.schedule {
+    fill: rgb(210, 233, 205);
+}
+
+.trip_communicated {
+    fill: rgb(245, 212, 26);
+}
+
+.wrapper {
+    height: 40px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+    padding-top: 1px;
+    float: left;
+    background-color: rgb(210, 233, 205);
+}
+
+.bordered {
+    border-top: 1px solid #343434;
+    border-bottom: 1px solid #343434;
+}
+
+.wrapper span {
+    float: left;
+    border-left: 1px solid #343434;
+}
+
+.special span {
+    height: 38px;
+}
+
+.person span {
+    height: 21px;
+}
+
+.schedule_span {
+    border-top: 1px solid rgb(210, 233, 205);
+    border-bottom: 1px solid rgb(210, 233, 205);
+}
+
+.driveTo_span {
+    background-color: rgb(240, 240, 240);
+}
+
+.person_vehicle_span {
+    background-color: #a2c4f8;
+}
+
+.special_vehicle_span {
+    background-color: #f8daa2;
+}
+
+.occupied_span {
+    background-color: rgb(250, 171, 191);
+}
+
+.occupied {
+    fill: rgb(250, 171, 191);
+}
+
+.pause {
+    fill: #e4abfa;
+}
+
+.special_vehicle_span:hover,
+.special_vehicle_span:hover,
+.occupied_span:hover,
+.occupied_span:focus {
+    background-color: rgb(206, 124, 124);
+}
+
+.bar:hover,
+.bar:focus {
+    fill: rgb(206, 124, 124);
+}
+
+.chart {
+    margin-top: 2px;
+}
+
+.timeLabel {
+    width: 118px;
+    float: left;
+    margin-top: 2px;
+    margin-left: 2px;
+    font-size: 10pt;
+    font-family: Helvetica, sans-serif;
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #bbb;
+}
+.table-bordered {
+    border: 1px solid #bbb;	
+}
+
+.table-responsive {
+    overflow: hidden;	
+}
+
+.popover td{
+    padding: 2px;
+}

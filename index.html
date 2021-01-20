@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Execute and monitor</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="ajaxLoadData.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row navbar">
+            <div class="col-sm-2">
+                <img src="images/Drip_RGB.png" class="logo">
+            </div>
+            <div class="col-sm-10">
+                <div class="header">
+                    <p class="text-bold">EAM Evaluator</p>
+                </div>
+                
+            </div>           
+        </div>
+        <div class="row">
+            <div class="col-sm-2 sidebar">
+                <ul class="list">
+                    <li id="first" class="menu-item top active" onclick="setActive(this); setCurrent(getElementById('overview'));"; >
+                        <p class="text" tabindex="1">Överblick</p>
+                    </li>
+                    <li id="second" class="menu-item" onclick="setActive(this); setCurrent(getElementById('detail'));">
+                        <p class="text" tabindex="2">Körorderdetalj</p>
+                    </li>
+                    <li id="third" class="menu-item" onclick="setActive(this); setCurrent(getElementById('history'));" >
+                        <p class="text" tabindex="3">Kommunikationshistorik<br>
+                            - körordrar</p>
+                    </li>
+                    <li id="fourth" class="menu-item" onclick="setActive(this); setCurrent(getElementById('history-trips'));">
+                        <p class="text" tabindex="4">Kommunikationshistorik<br>   
+                            - resor
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-10 main">
+                <div id="overview" class="view current row">
+                    
+                    <div class="col-sm-12 filter">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Filter</h5>
+                                <form>
+                                    <div class="row form">
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+
+                <div id="detail" class="view">DETAIL</div>
+                <div id="history"class="view">HISTORY</div>
+                <div id="history-trips"class="view">HISTORY TRIPS</div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>
+
+
+		<!-- <div class="row col-md-10">
+			<h1 id="heading">Manuel Alert Handling</h1>
+		</div>
+		<div class="row col-md-2">
+			<button type="button" class="btn btn-default" style="margin-top:20px" onclick="specialVehicleAlertGet();">Special Vehicles</button>
+			<button type="button" class="btn btn-default" style="margin-top:20px" onclick="norgesTaxiAlertGet();">Norges Taxi</button>
+			
+		</div>
+		<div class="row col-md-10 table-responsive">
+			<table id="specialVehicleTable" class="table table-bordered table-hover hidden">
+				<thead>
+					<tr>
+						<th>Vehicle</th>
+						<th>Last Report</th>
+						<th>Last Update</th>
+						<th>Next Node Time</th>
+						<th><div id="header_graph_view" style="width:600px;">&nbsp;</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<div  style="width:100%;height:100%;overflow: hidden;"></div>
+					<svg id="specialVehicleDiv" shape-rendering="crispEdges" style="position: absolute; top:5px; left:517px;pointer-events: none;" height="100%" width="600">
+						<defs>
+							<linearGradient id="Gradient1" x1="83%" y1="0" x2="100%" y2="0">
+								<stop stop-color="white" stop-opacity="0.6" offset="0%" />
+								<stop stop-color="white" stop-opacity="0" offset="100%" />
+							</linearGradient>
+						</defs>
+						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="0" y="3"></rect>
+						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="120" y="3"></rect>
+						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="240" y="3"></rect>
+						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="360" y="3"></rect>
+						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="480" y="3"></rect>
+				
+					
+					</svg>
+				</div>
+			</table>
+			<table id="norgesTaxiTable" class="table table-bordered table-hover hidden">
+				<thead>
+					<tr>
+						<th>Vehicle</th>
+						<th>Planned Pickup</th>
+						<th>Taxi Sent</th>
+						<th>Taxi Accepted</th>
+						<th>Taxi Dispatched</th>
+						<th>Taxi Vehicle</th>
+						<th>Trip Link</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
