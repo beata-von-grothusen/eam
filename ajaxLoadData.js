@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var time_indicator = ''
     var vehicle_img = ""
+    icon_type= ""
     var mymap = L.map('mapid').setView([57.467053 , 18.487117], 10);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -17,6 +18,7 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             $.each(data, function(key, value) {
+
                 if (value.status === 'on-time') {
                     time_indicator = "<img src='images/green-oval.png' class='oval'>"
                 }
@@ -29,9 +31,17 @@ $(document).ready(function() {
                 }
                 if (value.vehicle_type === 'special') {
                     vehicle_img = "images/purple-car.png"
+                    icon_type = "images/purple-marker.png"
                 } else {
                     vehicle_img = "images/green-car.png"
+                    icon_type = "images/green-marker.png"
                 }
+                L.marker([value.lat, value.long], {icon: new L.DivIcon({
+                    className: 'div-icon',
+                    html: 
+                    '<img class="div-image" src=' + icon_type + '>'+
+                    '<div class="icon-text">' + value.car + '</div>'
+                })} ).addTo(mymap);
                 $("#drive-order-list").append("<li class='car'><div class='row'><div class='car-div col-xs-3'><img src=" + vehicle_img + " class='car-img'><p class='car-number'>" + value.car + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.start + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.stop + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.nodes + "</p></div><div class='col-xs-3 car-div'>" + time_indicator + "<p class='minutes'>" +  value.time + "</p></div></div></li>");
          });
         },
