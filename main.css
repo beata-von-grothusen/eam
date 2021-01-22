@@ -1,3 +1,7 @@
+.body {
+    background-color: #F6F9FA !important;
+}
+
 .navbar {
     box-shadow : 0 2px 0 #1391D1;
     height: 3vh;
@@ -7,7 +11,7 @@
 
 .sidebar {
     background-color: #ffffff;
-    height: 100vh;
+    height: 80vh;
     padding-left: 0;
     padding-right: 0
 }
@@ -18,7 +22,7 @@
 
 .main {
     background-color: #F6F9FA;
-    height: 100vh;
+    height: 100%;
 
 }
 
@@ -49,13 +53,28 @@ p {
     outline: none
 }
 
-.text {
+.text-menu {
     color: black;
+}
+
+.text-active {
+    font-weight: bold;
 }
 
 .text-bold {
     color: black;
     font-weight: bold;
+}
+
+.text {
+    font-size: 11px;
+    padding: 10px  10px 0;
+}
+
+.header-text {
+    font-size: 11px;
+    padding: 10px 0 10px 4px;
+    font-weight: 500;
 }
 
 .header {
@@ -85,7 +104,7 @@ p {
 }
 
 input {
-    border-radius: 0;
+    border-radius: 0 !important;
 }
 
 .list {
@@ -97,19 +116,100 @@ input {
     ;   
 }
 
-
 .hidden {
     display: none;
 }
 
-.bar {
-    fill: #343434;
-    /* changes the background */
-    height: 28px;
-    stroke-width: 1;
-    stroke: rgb(0, 0, 0);
-    cursor: pointer;
-    font-family: Helvetica, sans-serif;
+.do-list {
+    background-color: white;
+    height: 70vh;
+    padding: 0;
+    border-right: 15px solid #F6F9FA;
+    overflow: scroll;
+
+}
+
+.map {
+    background-color: white;
+    height: 70vh;
+    padding: 0;
+}
+
+#mapid {
+    height: 70vh;
+}
+
+.column {
+    width: 15px;
+    padding: 0;
+    margin: 0
+}
+
+.in-main {
+    padding: 15px;
+}
+
+.car {
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+    border-bottom: 1px solid grey;
+}
+
+.list {
+    padding: 0
+}
+
+.drive-order-list {
+    padding: 0;
+    position: relative;
+}
+
+.car-header {
+    padding-left: 10px;
+    border-bottom: 1px solid grey;
+    margin: 0;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.car-img {
+    width: 30px
+}
+
+.car-div {
+    padding-left: 0;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding-right: 0
+}
+
+.car-number {
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+}
+
+.car-text {
+    font-size: 11px;
+    padding: 10px 0 10px 0;
+}
+
+.info-div {
+    text-align: center;
+    padding: 0
+}
+
+.oval {
+    width: 18px;
+}
+
+.minutes {
+    font-size: 11px;
+    text-align: center;
 }
 
 p {
@@ -125,6 +225,25 @@ p {
      padding: 15px
  }
 
+ .filter-header {
+     font-weight: 500;
+     font-size: 12px;
+     padding-bottom: 3px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 .container {
     width: 1400px;

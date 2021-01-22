@@ -12,6 +12,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ajaxLoadData.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 </head>
 
 <body>
@@ -30,18 +36,18 @@
         <div class="row">
             <div class="col-sm-2 sidebar">
                 <ul class="list">
-                    <li id="first" class="menu-item top active" onclick="setActive(this); setCurrent(getElementById('overview'));"; >
-                        <p class="text" tabindex="1">Överblick</p>
+                    <li id="first" class="menu-item top active" onclick="setActive(this, 'menu-item', 'active'); setActive(getElementById('overview'), 'view', 'current'); setActive(getElementById('text-overview'), 'text-menu','text-active')"; >
+                        <p id="text-overview" class="text-menu text-active" tabindex="1">Överblick</p>
                     </li>
-                    <li id="second" class="menu-item" onclick="setActive(this); setCurrent(getElementById('detail'));">
-                        <p class="text" tabindex="2">Körorderdetalj</p>
+                    <li id="second" class="menu-item" onclick="setActive(this, 'menu-item', 'active'); setActive(getElementById('detail'), 'view', 'current'); setActive(getElementById('text-detail'), 'text-menu','text-active')";>
+                        <p id="text-detail" class="text-menu" tabindex="2">Körorderdetalj</p>
                     </li>
-                    <li id="third" class="menu-item" onclick="setActive(this); setCurrent(getElementById('history'));" >
-                        <p class="text" tabindex="3">Kommunikationshistorik<br>
+                    <li id="third" class="menu-item" onclick="setActive(this, 'menu-item', 'active'); setActive(getElementById('history'), 'view', 'current'); setActive(getElementById('text-history'), 'text-menu','text-active')";>
+                        <p id="text-history" class="text-menu" tabindex="3">Kommunikationshistorik<br>
                             - körordrar</p>
                     </li>
-                    <li id="fourth" class="menu-item" onclick="setActive(this); setCurrent(getElementById('history-trips'));">
-                        <p class="text" tabindex="4">Kommunikationshistorik<br>   
+                    <li id="fourth" class="menu-item" onclick="setActive(this, 'menu-item', 'active'); setActive(getElementById('history-trips'), 'view', 'current'); setActive(getElementById('text-history-trips'), 'text-menu','text-active')";>
+                        <p id="text-history-trips" class="text-menu" tabindex="4">Kommunikationshistorik<br>   
                             - resor
                         </p>
                     </li>
@@ -49,32 +55,58 @@
             </div>
 
             <div class="col-sm-10 main">
-                <div id="overview" class="view current row">
-                    
-                    <div class="col-sm-12 filter">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Filter</h5>
-                                <form>
-                                    <div class="row form">
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control">
-                                      </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control">
-                                      </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control">
-                                      </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control">
-                                      </div>
-                                    </div>
-                                </form>
+                <div id="overview" class="view current">
+                    <div class="row">                       
+                        <div class="col-sm-12 filter">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Filter</h5>
+                                    <form>
+                                        <div class="row form">
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Visa fordon</p>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Område</p>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Körorder start</p>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Körorder slut</p> 
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="row in-main">
+                        <!-- <div class="col-xs-1 column"></div> -->
+                        <div class="col-md-3 do-list">
+                            <div class="col-md-12 list">
+                                <ul id="drive-order-list" class="drive-order-list">
+                                    <div class="row car-header">
+                                        <div class="header-text col-xs-3">Fordon</div>
+                                        <div class="header-text col-xs-2">Start</div>
+                                        <div class="header-text col-xs-2">Slut</div>
+                                        <div class="header-text col-xs-2">Noder</div>
+                                        <div class="header-text col-xs-3"></div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9 map" >
+                            <div class="col-md-12" id="mapid">
+                            </div>
+                        </div>
+                        <!-- <div class="col-xs-1 column"></div> -->
+                    </div>                   
                 </div>
 
 
