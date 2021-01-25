@@ -36,13 +36,88 @@ $(document).ready(function() {
                     vehicle_img = "images/green-car.png"
                     icon_type = "images/green-marker.png"
                 }
+
                 L.marker([value.lat, value.long], {icon: new L.DivIcon({
                     className: 'div-icon',
                     html: 
-                    '<img class="div-image" src=' + icon_type + '>'+
-                    '<div class="icon-text">' + value.car + '</div>'
+                    '<div class="hover-popup hide ' + value.car + '">' + 
+                        '<div class="col-sm-12">' +
+                            '<div class="row">' +
+                                '<p class="col-sm-9 text-popup bold">Senast uppdaterad: </p><p class="col-sm-3 text-popup green bold">07:29</p>' +
+                            '</div>' +
+                            '<div class="row col-sm-12 list">' +
+                                '<div class="col-sm-1 time">' +
+                                    '<img src="images/dark-green-oval.png" class="oval" alt="">' +
+                                '</div>' +
+                                '<div class="col-sm-11">' +
+                                    '<p class="text-popup indicator">I tid</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="row col-sm-12 list">' +
+                                '<div class="col-sm-1 list">' +
+                                    '<img src="images/sign-in-alt-solid.png" class="oval" alt="">' +
+                                '</div>' +
+                                '<div class="col-sm-11">' + 
+                                    '<p class="text-popup indicator">07:11(+1) <br> Stångagatan, Visby</p>' + 
+                                '</div>' +
+                            '</div>' +
+                            '<div class="row col-sm-12 list">' +
+                                '<div class="col-sm-1 list">' +
+                                    '<img src="images/sign-in-alt-solid-red.png" class="oval" alt="">' +
+                                '</div>' +
+                                '<div class="col-sm-11">' +
+                                    '<p class="text-popup indicator">Sjonhem, Romakloster</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="row col-sm-12 list">' +
+                                '<div class="col-sm-2 list">' +
+                                    '<p class="text-popup bold">Behov: </p>' +
+                                '</div>' +
+                                '<div class="col-sm-5 alone">' +
+                                    '<p class="text-popup">Ensamåkare</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="row col-sm-12 list">' +
+                                '<div class="col-sm-7 list">' +
+                                    '<p class="text-popup bold">Antal personer: </p>' +
+                                '</div>' +
+                                '<div class="col-sm-1 alone list">' +
+                                    '<p class="text-popup">1</p>' +
+                                '</div>' +
+                            '</div>' +                                               
+                        '</div>' +
+                    '</div>' +
+                    '<div class="marker" onmouseover="showPopup('+ value.car +');" onmouseout="removePopup('+ value.car +')";>' + 
+                        '<img class="div-image" src=' + icon_type + '>' +
+                            '<div class="icon-text">' + value.car + '</div>' + 
+                        '</img>' + 
+                    '</div>'
                 })} ).addTo(mymap);
-                $("#drive-order-list").append("<li class='car'><div class='row'><div class='car-div col-xs-3'><img src=" + vehicle_img + " class='car-img'><p class='car-number'>" + value.car + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.start + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.stop + "</p></div><div class='col-xs-2 info-div'><p class='text'>" + value.nodes + "</p></div><div class='col-xs-3 car-div'>" + time_indicator + "<p class='minutes'>" +  value.time + "</p></div></div></li>");
+                
+                $("#drive-order-list").append(
+                    "<li class='car'>" + 
+                        "<div class='row'>" + 
+                            "<div class='car-div col-xs-3'>" + 
+                                "<img src=" + vehicle_img + " class='car-img'>" + 
+                                    "<p class='car-number'>" + value.car + "</p>" + 
+                            "</div>" +
+                            "<div class='col-xs-2 info-div'>" + 
+                                "<p class='text'>" + value.start + "</p>" + 
+                            "</div>" + 
+                            "<div class='col-xs-2 info-div'>" + 
+                                "<p class='text'>" + value.stop + "</p>" +
+                            "</div>" +
+                            "<div class='col-xs-2 info-div'>" + 
+                                "<p class='text'>" + value.nodes + "</p>" + 
+                            "</div>" + 
+                            "<div class='col-xs-3 car-div'>" + 
+                                time_indicator + 
+                                "<p class='minutes'>" +  
+                                    value.time + 
+                                "</p>" + 
+                            "</div>" +
+                        "</div>" + 
+                    "</li>");
          });
         },
         url: '/do.json'
@@ -57,6 +132,21 @@ function setActive(element, classname, activator) {
         a[i].classList.remove(activator)
     }
     element.classList.add(activator);
+}
+
+function showPopup(carNumber) {
+    var a = document.getElementsByClassName(carNumber.toString());
+    for (i = 0; i < a.length; i++) {
+        a[i].classList.remove('hide')
+    }
+}
+
+function removePopup(carNumber) {
+    var a = document.getElementsByClassName(carNumber.toString());
+    for (i = 0; i < a.length; i++) {
+        a[i].classList.add('hide')
+    }
+    console.log("Mouse out!")
 }
 
 function getDo() {

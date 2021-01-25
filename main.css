@@ -22,7 +22,7 @@
 
 .main {
     background-color: #F6F9FA;
-    height: 100%;
+    height: 90vh;
 
 }
 
@@ -126,7 +126,6 @@ input {
     padding: 0;
     border-right: 15px solid #F6F9FA;
     overflow: scroll;
-
 }
 
 .map {
@@ -234,16 +233,19 @@ p {
  .div-icon {
      position: relative;
      z-index: -1;
-     width: 50px;
  }
 
  .div-image {
     width: 30px;
+    position: absolute;
+    bottom: -27px;
+    z-index: -1;
  }
 
  .icon-text {
      position: absolute;
-     z-index: 1;
+     position: fixed;
+     z-index: 0;
      bottom: -10px;
      left: 5px;
      color: white;
@@ -252,147 +254,66 @@ p {
      font-weight: bold !important;
  }
 
+ .line {
+     padding-top: 7px;
+     text-align: center;
+     align-self: center;
+ }
 
+ .time-interval {
+     width: 50px
+ }
 
+ .interval-container {
+     padding-left: 15px;
+ }
 
+ .hover-popup {
+     background-color: rgba(255,255,255, 0.8);
+     width: 190px;
+     border-radius: 5px !important;
+     z-index: 3;
+     position: absolute;
+     bottom: -10px;
+     left: -75px;
+     /* height: 180px; */
+     padding: 10px;
+     transition: all 5s ease; 
 
+ }
 
+ .hide {
+     visibility: none;
+ }
 
+ .time {
+     margin: 0;
+     padding: 0
+ }
 
+ .text-popup {
+     font-size: 11px;
+ }
 
+ .indicator {
+     padding-top: 3px;
+ }
 
+ .bold {
+    font-weight: 500;
+    padding: 0
+ }
 
+ .green {
+     color: #007900;
+     left: -25px;
+     padding: 0
+ }
 
+ .alone {
+     padding-top: 1px
+ }
 
- 
-
-.container {
-    width: 1400px;
-}
-.person_vehicle {
-    fill: #a2c4f8;
-}
-
-.special_vehicle {
-    fill: #f8daa2;
-}
-
-.person_trip {
-    fill: #0066ff;
-}
-
-.special_trip {
-    fill: #ffa600;
-}
-
-.bar text {
-    color: black;
-}
-
-.person_picked_up {
-    fill: rgb(138, 187, 142);
-}
-
-.schedule {
-    fill: rgb(210, 233, 205);
-}
-
-.trip_communicated {
-    fill: rgb(245, 212, 26);
-}
-
-.wrapper {
-    height: 40px;
-    margin-top: -8px;
-    margin-bottom: -8px;
-    padding-top: 1px;
-    float: left;
-    background-color: rgb(210, 233, 205);
-}
-
-.bordered {
-    border-top: 1px solid #343434;
-    border-bottom: 1px solid #343434;
-}
-
-.wrapper span {
-    float: left;
-    border-left: 1px solid #343434;
-}
-
-.special span {
-    height: 38px;
-}
-
-.person span {
-    height: 21px;
-}
-
-.schedule_span {
-    border-top: 1px solid rgb(210, 233, 205);
-    border-bottom: 1px solid rgb(210, 233, 205);
-}
-
-.driveTo_span {
-    background-color: rgb(240, 240, 240);
-}
-
-.person_vehicle_span {
-    background-color: #a2c4f8;
-}
-
-.special_vehicle_span {
-    background-color: #f8daa2;
-}
-
-.occupied_span {
-    background-color: rgb(250, 171, 191);
-}
-
-.occupied {
-    fill: rgb(250, 171, 191);
-}
-
-.pause {
-    fill: #e4abfa;
-}
-
-.special_vehicle_span:hover,
-.special_vehicle_span:hover,
-.occupied_span:hover,
-.occupied_span:focus {
-    background-color: rgb(206, 124, 124);
-}
-
-.bar:hover,
-.bar:focus {
-    fill: rgb(206, 124, 124);
-}
-
-.chart {
-    margin-top: 2px;
-}
-
-.timeLabel {
-    width: 118px;
-    float: left;
-    margin-top: 2px;
-    margin-left: 2px;
-    font-size: 10pt;
-    font-family: Helvetica, sans-serif;
-}
-
-.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
-    border: 1px solid #bbb;
-}
-.table-bordered {
-    border: 1px solid #bbb;	
-}
-
-.table-responsive {
-    overflow: hidden;	
-}
-
-.popover td{
-    padding: 2px;
-}
+ /* .marker {
+     z-index: -2
+ } */

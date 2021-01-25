@@ -111,7 +111,37 @@
 
 
 
-                <div id="detail" class="view">DETAIL</div>
+                <div id="detail" class="view">
+                    <div class="row">                       
+                        <div class="col-sm-12 filter">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Filter</h5>
+                                    <form>
+                                        <div class="row form">
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Visa fordon</p>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="filter-header">Körorderstatus</p>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <p class="filter-header">Tidsintervall</p>
+                                            <div class="row interval-container">
+                                                <input type="text" class="form-control time-interval col-sm-5">
+                                                <p class="filter-header col-sm-1 line">-</p>
+                                                <input type="text" class="form-control time-interval col-sm-5">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="history"class="view">HISTORY</div>
                 <div id="history-trips"class="view">HISTORY TRIPS</div>
             </div>
