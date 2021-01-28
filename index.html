@@ -23,10 +23,10 @@
 <body>
     <div class="container-fluid">
         <div class="row navbar">
-            <div class="col-sm-2">
+            <div class="col-md-2">
                 <img src="images/Drip_RGB.png" class="logo">
             </div>
-            <div class="col-sm-10">
+            <div class="col-md-10">
                 <div class="header">
                     <p class="text-bold">EAM Evaluator</p>
                 </div>
@@ -34,7 +34,7 @@
             </div>           
         </div>
         <div class="row">
-            <div class="col-sm-2 sidebar">
+            <div class="col-xs-2 sidebar">
                 <ul class="list">
                     <li id="first" class="menu-item top active" onclick="setActive(this, 'menu-item', 'active'); setActive(getElementById('overview'), 'view', 'current'); setActive(getElementById('text-overview'), 'text-menu','text-active')"; >
                         <p id="text-overview" class="text-menu text-active" tabindex="1">Överblick</p>
@@ -54,7 +54,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-10 main">
+            <div class="col-xs-10 main">
                 <div id="overview" class="view current">
                     <div class="row">                       
                         <div class="col-sm-12 filter">
@@ -141,6 +141,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row under">
+                        <!-- <div class="col-md-12 under"> -->
+                            <div class="col-md-4 trips-list">
+                                <div class="col-md-12 list">
+                                    <ul id="drive-order-list" class="drive-order-list">                                   
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-8 wrapper">
+                                <div class="row col-md-12 vehicle-info"></div>
+                                <div class="col-md-6 wrapper-small">
+                                    <div class="notifications"></div>
+                                    <div class="notifications"></div>
+                                </div>
+                                <div class="col-md-6 map-small">
+                                        
+                                </div>                                
+                                
+                            </div>
+                            
+                        <!-- </div> -->
+                    </div>
                 </div>
                 <div id="history"class="view">HISTORY</div>
                 <div id="history-trips"class="view">HISTORY TRIPS</div>
@@ -155,60 +177,3 @@
 
 
 </html>
-
-
-		<!-- <div class="row col-md-10">
-			<h1 id="heading">Manuel Alert Handling</h1>
-		</div>
-		<div class="row col-md-2">
-			<button type="button" class="btn btn-default" style="margin-top:20px" onclick="specialVehicleAlertGet();">Special Vehicles</button>
-			<button type="button" class="btn btn-default" style="margin-top:20px" onclick="norgesTaxiAlertGet();">Norges Taxi</button>
-			
-		</div>
-		<div class="row col-md-10 table-responsive">
-			<table id="specialVehicleTable" class="table table-bordered table-hover hidden">
-				<thead>
-					<tr>
-						<th>Vehicle</th>
-						<th>Last Report</th>
-						<th>Last Update</th>
-						<th>Next Node Time</th>
-						<th><div id="header_graph_view" style="width:600px;">&nbsp;</div></th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-				<div  style="width:100%;height:100%;overflow: hidden;"></div>
-					<svg id="specialVehicleDiv" shape-rendering="crispEdges" style="position: absolute; top:5px; left:517px;pointer-events: none;" height="100%" width="600">
-						<defs>
-							<linearGradient id="Gradient1" x1="83%" y1="0" x2="100%" y2="0">
-								<stop stop-color="white" stop-opacity="0.6" offset="0%" />
-								<stop stop-color="white" stop-opacity="0" offset="100%" />
-							</linearGradient>
-						</defs>
-						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="0" y="3"></rect>
-						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="120" y="3"></rect>
-						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="240" y="3"></rect>
-						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="360" y="3"></rect>
-						<rect style="fill:#000000;fill-opacity:0.1" width="1" height="100%" x="480" y="3"></rect>
-				
-					
-					</svg>
-				</div>
-			</table>
-			<table id="norgesTaxiTable" class="table table-bordered table-hover hidden">
-				<thead>
-					<tr>
-						<th>Vehicle</th>
-						<th>Planned Pickup</th>
-						<th>Taxi Sent</th>
-						<th>Taxi Accepted</th>
-						<th>Taxi Dispatched</th>
-						<th>Taxi Vehicle</th>
-						<th>Trip Link</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>

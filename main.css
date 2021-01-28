@@ -27,7 +27,7 @@
 }
 
 .logo {
-    height: 7vh;
+    height: 50px;
     padding: 10px
 }
 
@@ -146,6 +146,7 @@ input {
 
 .in-main {
     padding: 15px;
+    background-color: #F6F9FA;
 }
 
 .car {
@@ -314,6 +315,52 @@ p {
      padding-top: 1px
  }
 
- /* .marker {
-     z-index: -2
- } */
+ .trips-list {
+    background-color: white;
+    height: 70vh;
+    border-right: 15px solid #F6F9FA;
+}
+
+.under {
+    background-color: #F6F9FA;
+    padding: 15px;
+}
+
+.vehicle-info {
+    background-color: white;
+    height: 100px;
+    margin-right: 0;
+    padding: 0;
+    margin-left: 0 !important;
+} 
+
+.notifications {
+    background-color: white;
+    height: 26vh;
+    margin-top: 15px;
+    border-right: 15px solid #F6F9FA;
+
+}
+
+.map-small {
+    background-color: white;
+    height: 54vh;
+    margin-top: 15px;
+}
+
+.wrapper {
+    padding: 0;
+}
+
+.wrapper-small {
+    padding: 0;
+    margin: 0
+}
+
+.polyline {
+    visibility: hidden;
+}
+
+.grey {
+    background-color: #E8E9EC;
+}

@@ -1,0 +1,148 @@
+[
+    {
+        "car": "123",
+        "start": "08:00",
+        "stop": "17:00",
+        "nodes": "24",
+        "status": "late",
+        "time": "+10 min",
+        "vehicle_type": "standard",
+        "lat": 57.626874, 
+        "long": 18.282713
+    },
+    {
+        "car": "222",
+        "start": "08:00",
+        "stop": "14:00",
+        "nodes": "12",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "standard",
+        "lat": 57.647937, 
+        "long": 18.299569
+    },
+    {
+        "car": "111",
+        "start": "09:00",
+        "stop": "15:00",
+        "nodes": "18",
+        "status": "late",
+        "time": "+10 min",
+        "vehicle_type": "standard",
+        "lat": 57.610530, 
+        "long": 18.304017
+    },
+    {
+        "car": "333",
+        "start": "08:00",
+        "stop": "12:00",
+        "nodes": "6",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "special",
+        "lat": 57.626874,
+        "long": 18.282713
+    },
+    {
+        "car": "125",
+        "start": "08:00",
+        "stop": "17:00",
+        "nodes": "26",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "standard",
+        "lat": 57.626416,
+        "long": 18.322115
+
+    },
+    {
+        "car": "323",
+        "start": "10:00",
+        "stop": "15:00",
+        "nodes": "10",
+        "status": "late",
+        "time": "+10 min",
+        "vehicle_type": "special",
+        "lat": 57.591421, 
+        "long": 18.294206
+
+    },
+    {
+        "car": "167",
+        "start": "09:00",
+        "stop": "14:00",
+        "nodes": "10",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "standard",
+        "lat": 57.614401,
+        "long": 18.408362
+    },
+    {
+        "car": "134",
+        "start": "18:00",
+        "stop": "12:00",
+        "nodes": "10",
+        "status": "late",
+        "time": "+10 min",
+        "vehicle_type": "standard",
+        "lat": 57.554239, 
+        "long": 18.529955
+    },
+    {
+        "car": "199",
+        "start": "12:00",
+        "stop": "17:00",
+        "nodes": "10",
+        "status": "",
+        "time": "",
+        "vehicle_type": "standard",
+        "lat": "",
+        "long": ""
+    },
+    {
+        "car": "345",
+        "start": "09:00",
+        "stop": "176:00",
+        "nodes": "16",
+        "status": "late",
+        "time": "+10 min",
+        "vehicle_type": "special",
+        "lat": 57.504852,
+        "long": 18.152606
+    },
+    {
+        "car": "156",
+        "start": "12:00",
+        "stop": "15:00",
+        "nodes": "8",
+        "status": "",
+        "time": "",
+        "vehicle_type": "standard",
+        "lat": "",
+        "long": ""
+    },
+    {
+        "car": "188",
+        "start": "08:00",
+        "stop": "17:00",
+        "nodes": "28",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "standard",
+        "lat": 57.709972, 
+        "long": 18.539591
+
+    },
+    {
+        "car": "378",
+        "start": "10:00",
+        "stop": "17:00",
+        "nodes": "14",
+        "status": "on-time",
+        "time": "I tid",
+        "vehicle_type": "special",
+        "lat": 57.429856, 
+        "long": 18.842293
+    }
+]
