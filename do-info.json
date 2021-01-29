@@ -1,148 +1,231 @@
 [
     {
         "car": "123",
-        "start": "08:00",
-        "stop": "17:00",
-        "nodes": "24",
-        "status": "late",
-        "time": "+10 min",
         "vehicle_type": "standard",
-        "lat": 57.626874, 
-        "long": 18.282713
+        "driver_phone": "0700009900",
+        "last_update": "07:29",
+        "services": [
+            {
+                "uuid": "BAG",
+                "text": "Bagage",
+                "nbrAllowed": 1,
+                "nbrUsed": 0,
+                "type": "common",
+                "tagType": "services"
+            },
+            {
+                "uuid": "WHELLU",
+                "text": "Hopf\u00e4llbar rullstol",
+                "nbrAllowed": 1,
+                "nbrUsed": 0,
+                "type": "common",
+                "tagType": "services"
+            },
+            {
+                "uuid": "WALK",
+                "text": "Rollator",
+                "nbrAllowed": 1,
+                "nbrUsed": 0,
+                "type": "common",
+                "tagType": "services"
+            },
+            {
+                "uuid": "PET",
+                "text": "P\u00e4lsdjur",
+                "nbrAllowed": 1,
+                "nbrUsed": 0,
+                "type": "common",
+                "tagType": "services"
+            },
+            {
+                "uuid": "WHELRE",
+                "text": "Resa i rullstol",
+                "nbrAllowed": 1,
+                "nbrUsed": 1,
+                "type": "personal",
+                "tagType": "services"
+            }
+            
+        ],
+        "startNode": {
+            "time": "07:00",
+            "lat": 57.553874,
+            "long": 18.291507
+        },
+        "stopNode": {
+            "time": "17:00",
+            "lat": 57.553874,
+            "long": 18.291507
+        },
+        "nodes": [
+            {
+                "action": "pickup",
+                "time": "07:15",
+                "address": "Bergmansgatan, Visby",
+                "lat": 57.628388,
+                "long": 18.290558
+            },
+            {
+                "action": "dropoff",
+                "time": "07:25",
+                "address": "Stenkumlaväg, Visby",
+                "lat": 57.624655,
+                "long": 18.285857
+            },
+            {
+                "action": "pickup",
+                "time": "07:30",
+                "address": "Färjeleden, Visby",
+                "lat": 57.634321,
+                "long": 18.282741
+            },
+            {
+                "action": "dropoff",
+                "time": "07:45",
+                "address": "S:t Olofs gränd, Visby",
+                "lat": 57.643108,
+                "long": 18.293239
+            },
+            {
+                "action": "pickup",
+                "time": "08:00",
+                "address": "Nygatan, Visby",
+                "lat": 57.644187, 
+                "long": 18.300883
+            },
+            {
+                "action": "dropoff",
+                "time": "08:15",
+                "address": "Drejaregatan, Vibble",
+                "lat": 57.601144, 
+                "long": 18.250882
+            },
+            {
+                "action": "pickup",
+                "time": "08:30",
+                "address": "Holger Rosmans väg",
+                "lat": 57.604514, 
+                "long": 18.225431
+            },
+            {
+                "action": "dropoff",
+                "time": "08:45",
+                "address": "Solbergaskolan, Visby",
+                "lat": 57.636196,
+                "long": 18.298954
+            },
+            {
+                "action": "pickup",
+                "time": "09:00",
+                "address": "Norra Hansegatan, Visby",
+                "lat": 57.644169,
+                "long": 18.314142
+            },
+            {
+                "action": "dropoff",
+                "time": "09:10",
+                "address": "Blåeldsvägen, Visby",
+                "lat": 57.611841, 
+                "long": 18.299482
+            },
+            {
+                "action": "pickup",
+                "time": "09:30",
+                "address": "Visborgsallén, Visby",
+                "lat": 57.611694, 
+                "long": 18.283004
+            },
+            {
+                "action": "dropoff",
+                "time": "09:45",
+                "address": "Vinkelgatan, Visby",
+                "lat": 57.619968,
+                "long": 18.285396
+            }
+        ]
     },
     {
         "car": "222",
-        "start": "08:00",
-        "stop": "14:00",
-        "nodes": "12",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "standard",
-        "lat": 57.647937, 
-        "long": 18.299569
+        "startNode": {
+
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "111",
-        "start": "09:00",
-        "stop": "15:00",
-        "nodes": "18",
-        "status": "late",
-        "time": "+10 min",
-        "vehicle_type": "standard",
-        "lat": 57.610530, 
-        "long": 18.304017
+        "startNode": {
+
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "333",
-        "start": "08:00",
-        "stop": "12:00",
-        "nodes": "6",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "special",
-        "lat": 57.626874,
-        "long": 18.282713
+        "startNode": {
+
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "125",
-        "start": "08:00",
-        "stop": "17:00",
-        "nodes": "26",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "standard",
-        "lat": 57.626416,
-        "long": 18.322115
+        "startNode": {
 
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "323",
-        "start": "10:00",
-        "stop": "15:00",
-        "nodes": "10",
-        "status": "late",
-        "time": "+10 min",
-        "vehicle_type": "special",
-        "lat": 57.591421, 
-        "long": 18.294206
+        "startNode": {
 
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "167",
-        "start": "09:00",
-        "stop": "14:00",
-        "nodes": "10",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "standard",
-        "lat": 57.614401,
-        "long": 18.408362
+        "startNode": {
+
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     },
     {
         "car": "134",
-        "start": "18:00",
-        "stop": "12:00",
-        "nodes": "10",
-        "status": "late",
-        "time": "+10 min",
-        "vehicle_type": "standard",
-        "lat": 57.554239, 
-        "long": 18.529955
-    },
-    {
-        "car": "199",
-        "start": "12:00",
-        "stop": "17:00",
-        "nodes": "10",
-        "status": "",
-        "time": "",
-        "vehicle_type": "standard",
-        "lat": "",
-        "long": ""
-    },
-    {
-        "car": "345",
-        "start": "09:00",
-        "stop": "176:00",
-        "nodes": "16",
-        "status": "late",
-        "time": "+10 min",
-        "vehicle_type": "special",
-        "lat": 57.504852,
-        "long": 18.152606
-    },
-    {
-        "car": "156",
-        "start": "12:00",
-        "stop": "15:00",
-        "nodes": "8",
-        "status": "",
-        "time": "",
-        "vehicle_type": "standard",
-        "lat": "",
-        "long": ""
-    },
-    {
-        "car": "188",
-        "start": "08:00",
-        "stop": "17:00",
-        "nodes": "28",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "standard",
-        "lat": 57.709972, 
-        "long": 18.539591
+        "startNode": {
 
-    },
-    {
-        "car": "378",
-        "start": "10:00",
-        "stop": "17:00",
-        "nodes": "14",
-        "status": "on-time",
-        "time": "I tid",
-        "vehicle_type": "special",
-        "lat": 57.429856, 
-        "long": 18.842293
+        },
+        "stopNode": {
+
+        },
+        "nodes": {
+
+        }
     }
-]
+] 

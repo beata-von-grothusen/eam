@@ -12,6 +12,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ajaxLoadData.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/471921e909.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -143,14 +144,42 @@
                     </div>
                     <div class="row under">
                         <!-- <div class="col-md-12 under"> -->
-                            <div class="col-md-4 trips-list">
+                            <div class="col-md-5 trips-list">
                                 <div class="col-md-12 list">
-                                    <ul id="drive-order-list" class="drive-order-list">                                   
+                                    <ul id="drive-order-detail" class="drive-order-list">   
+                                        <div class="row do-header">
+                                            <div class="header-text col-xs-1">Resa</div>
+                                            <div class="header-text col-xs-1 x">Ank.</div>
+                                            <div class="header-text col-xs-1">Utf.tid</div>
+                                            <div class="header-text col-xs-2 x">Adress</div>
+                                            <div class="header-text col-xs-2 xy">Resenär</div>
+                                            <div class="header-text col-xs-2 xy">Behov</div>
+                                            <div class="header-text col-xs-1 x">Avg.</div>
+                                            <div class="header-text col-xs-1 x">Utf.tid</div>
+                                        </div>
+                                        <li class="row do">
+                                            <div class="col-xs-12 order">
+                                                <div class="col-xs-1 do-div do-text">1<i class="fa fa-dot-circle-o x" aria-hidden="true"></i></div>
+                                                <div class="col-xs-1 do-div do-text">07:00</div>
+                                                <div class="col-xs-1 do-div do-text">07:00</div>
+                                                <div class="col-xs-2 do-div do-text x">Skarphällsgatan, Visby</div>
+                                                <div class="col-xs-2 do-div do-text"></div>
+                                                <div class="col-xs-2 do-div do-text"></div>
+                                                <div class="col-xs-1 do-div do-text x">07:00</div>
+                                                <div class="col-xs-1 do-div do-text"></div>
+                                            </div>
+
+
+                                        </li>
+                                                                       
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-8 wrapper">
-                                <div class="row col-md-12 vehicle-info"></div>
+                            <div class="col-md-7 wrapper">
+                                <div id="vehicle-info" class="row col-md-12 vehicle-info">
+                                    <h5 class="info-header">Fordonsinformation</h5>
+                                    
+                                </div>
                                 <div class="col-md-6 wrapper-small">
                                     <div class="notifications"></div>
                                     <div class="notifications"></div>

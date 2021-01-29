@@ -73,7 +73,7 @@ p {
 
 .header-text {
     font-size: 11px;
-    padding: 10px 0 10px 4px;
+    padding: 10px 0 10px 0;
     font-weight: 500;
 }
 
@@ -163,6 +163,7 @@ input {
 .drive-order-list {
     padding: 0;
     position: relative;
+    list-style-type: none;
 }
 
 .car-header {
@@ -271,12 +272,12 @@ p {
 
  .hover-popup {
      background-color: rgba(255,255,255, 0.8);
-     width: 190px;
+     width: 200px;
      border-radius: 5px !important;
      z-index: 3;
      position: absolute;
      bottom: -10px;
-     left: -75px;
+     left: -80px;
      /* height: 180px; */
      padding: 10px;
      transition: all 5s ease; 
@@ -284,7 +285,8 @@ p {
  }
 
  .hide {
-     visibility: none;
+     visibility: hidden;
+     display: none
  }
 
  .time {
@@ -319,6 +321,8 @@ p {
     background-color: white;
     height: 70vh;
     border-right: 15px solid #F6F9FA;
+    padding: 0;
+    overflow: scroll;
 }
 
 .under {
@@ -328,7 +332,7 @@ p {
 
 .vehicle-info {
     background-color: white;
-    height: 100px;
+    height: 115px;
     margin-right: 0;
     padding: 0;
     margin-left: 0 !important;
@@ -363,4 +367,145 @@ p {
 
 .grey {
     background-color: #E8E9EC;
+}
+
+.node-info {
+    padding: 0 0 0 15px;
+}
+
+.fa-check-circle {
+    color: green
+}
+
+.to-from {
+    padding: 2px 0 0 0
+}
+
+.border {
+    border-bottom: 0.5px solid green;
+    width: 120%;
+    left: -50px !important;
+    padding-top: 3px;
+}
+
+.do-header {
+    border-bottom: 1px solid grey;
+    margin: 0;
+    background-color: white;
+    position: sticky;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+}
+
+.do-div {
+    /* align-items: center;
+    align-content: center;
+    text-align: center; */
+    padding-right: 0;
+
+} 
+
+.do-text {
+    font-size: 11px;
+    padding: 10px 0 0 0;
+
+}
+
+.do {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-bottom: 0.5px solid grey;
+    padding-bottom: 10px;
+    
+}
+
+.x {
+    padding-left: 6px !important
+}
+
+.xy {
+    padding-left: 25px !important
+}
+
+.pickup {
+    background-color: rgba(231, 245, 231, .5);
+}
+
+.dropoff {
+    background-color: rgba(254, 224, 222, .5);
+}
+
+.pick {
+    color: green
+}
+
+.drop {
+    color: red;
+    transform: rotate(180deg);
+    margin-left: 5px;
+    padding-bottom: 1px
+}
+
+.info-header {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.car-logo {
+    width: 50px;
+    text-align: center;
+    /* height: 19px; */
+}
+
+.logo-div {
+    padding-left: 50px;
+    width: 170px;
+}
+
+.number-text {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 12px;
+}
+
+.z {
+    padding: 0
+}
+
+.time-div {
+    margin-top: -10px !important;
+    width: 140px
+}
+
+.services-div {
+    margin-top: -10px !important;
+    width: 180px;
+}
+
+.contact-div {
+    margin-top: -10px !important;
+    width: 120px;
+}
+
+.service {
+    border: 0.5px solid #40A6D7;
+    border-radius: 5px;
+    background-color: #E8EFF2;
+    display: inline-block;
+    margin: 1px;
+}
+
+.service-text {
+    font-size: 11px;
+    padding: 4px;
+}
+
+.services {
+    padding-left: 15px;
+    padding-top: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
 }

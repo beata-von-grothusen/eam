@@ -5,12 +5,14 @@ $(document).ready(function() {
     var previousNode = {}
     var previousAction = ""
     var upComingAction = ""
+    var upComingAction2 = ""
     var mymap = L.map('mapid').setView([57.467053 , 18.487117], 10);
     var t = new Date();
     var hour = t.getHours()
     var minutes = t.getMinutes()
     var seconds = t.getSeconds()
     var time = hour + ':' + minutes + ':' + seconds
+    var chosenDo = ""
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -60,9 +62,16 @@ $(document).ready(function() {
                     icon_type = "images/green-marker.png"
                 }
                 if (value.upComingNodes[0].action = 'pickup') {
-                    upComingAction = "images/sign-in-alt-solid.png"
-                } else {
                     upComingAction = "images/sign-in-alt-solid-red.png"
+                } 
+                if (value.upComingNodes[0].action = 'dropoff') {
+                    upComingAction = "images/sign-in-alt-solid.png"
+                }
+                if (value.upComingNodes[1].action = 'pickup') {
+                    upComingAction2 = "images/sign-in-alt-solid-red.png"
+                } 
+                if (value.upComingNodes[1].action = 'dropoff') {
+                    upComingAction2 = "images/sign-in-alt-solid.png"
                 }
 
                 $.each(value.previousNodes, function(x, y) {
@@ -80,13 +89,13 @@ $(document).ready(function() {
                     if (y.action !== 'coordinate') {
                         previousNode = y
                         if (y.action = 'dropoff') {
-                            previousAction = "images/sign-in-alt-solid-red.png"
-                        }
-                        if (y.action = 'pickup') {
                             previousAction = "images/sign-in-alt-solid.png"
                         }
+                        if (y.action = 'pickup') {
+                            previousAction = "images/sign-in-alt-solid-red.png"
+                        }
                         return false
-                    }                  
+                    }                   
                 })
 
                 $.each(value.upComingNodes, function(x, y) {
@@ -122,29 +131,32 @@ $(document).ready(function() {
                                 '</div>' +
                             '</div>' +
                             '<div class="row col-sm-12 list">' +
-                                '<div class="col-sm-1 list">' +
+                                '<div class="col-sm-1 to-from">' +
                                     '<img src=' + previousAction + ' class="oval" alt="">' +
                                 '</div>' +
-                                '<div class="col-sm-11">' + 
-                                    '<p class="text-popup indicator">' + previousNode.time + '<br>' + previousNode.address + '</p>' + 
-                                '</div>' +
-                            '</div>' +
+                                '<div class="col-sm-11 node-info">' +
+                                
+                                    '<p class="text-popup indicator "><i class="fa fa-check-circle" aria-hidden="true"></i> ' + previousNode.time + '<br>' + previousNode.address + '</p>' +
+                                '</div>' +                               
+                            '</div>' +                         
                             '<div class="row col-sm-12 list">' +
-                                '<div class="col-sm-1 list">' +
+                            '<p class=border></p>' +
+                                '<div class="col-sm-1 to-from">' +
                                     '<img src=' + upComingAction + ' class="oval" alt="">' +
                                 '</div>' +
-                                '<div class="col-sm-11">' +
-                                    '<p class="text-popup indicator">' + value.upComingNodes[0].address + '</p>' +
+                                '<div class="col-sm-11 node-info">' +
+                                    '<p class="text-popup indicator">' + value.upComingNodes[0].time + '<br>' + value.upComingNodes[0].address + '</p>' +
                                 '</div>' +
                             '</div>' +
                             '<div class="row col-sm-12 list">' +
-                                '<div class="col-sm-2 list">' +
-                                    '<p class="text-popup bold">Behov: </p>' +
+                                '<div class="col-sm-1 to-from">' +
+                                    '<img src=' + upComingAction2 + ' class="oval" alt="">' +
                                 '</div>' +
-                                '<div class="col-sm-5 alone">' +
-                                    '<p class="text-popup">Ensamåkare</p>' +
+                                '<div class="col-sm-11 node-info">' +
+                                    '<p class="text-popup indicator">' + value.upComingNodes[1].time + '<br>' + value.upComingNodes[1].address + '</p>' +
                                 '</div>' +
                             '</div>' +
+
                             '<div class="row col-sm-12 list">' +
                                 '<div class="col-sm-7 list">' +
                                     '<p class="text-popup bold">Antal personer: </p>' +
@@ -165,7 +177,7 @@ $(document).ready(function() {
                 var detail=document.getElementById('detail')
                 
                 $("#drive-order-list").append(
-                    "<li onclick='listClick()' class='car listitem" + value.car + "'>" + 
+                    "<li onmouseover='showPopup("+ value.car +"); showPolyline("+ value.car +")' onmouseout='removePolyline("+ value.car +"); removePopup("+ value.car +")'; onclick='listClick(" + JSON.stringify(value) + ");' class='car listitem" + value.car + "'>" + 
                         "<div class='row'>" + 
                             "<div class='car-div col-xs-3'>" + 
                                 "<img src=" + vehicle_img + " class='car-img'>" + 
@@ -188,7 +200,11 @@ $(document).ready(function() {
                             "</div>" +
                         "</div>" + 
                     "</li>");
+
+                    
          });
+
+
         },
         url: '/do.json'
     });
@@ -207,7 +223,6 @@ function showPolyline(carNumber) {
     }
     var c = document.getElementsByClassName('marker');
     for (i = 0; i < c.length; i++) {
-        console.log(c[i].id)
         if (c[i].id !== 'marker-div' + carNumber.toString()) {
             c[i].classList.add('polyline')
         }
@@ -237,6 +252,7 @@ function setActive(element, classname, activator) {
         a[i].classList.remove(activator)
     }
     element.classList.add(activator);
+    chosenDo = ""    
 }
 
 function showPopup(carNumber) {
@@ -261,11 +277,84 @@ function removePopup(carNumber) {
     }
 }
 
-function listClick() {
+function listClick(carNumber) {
     setActive(document.getElementById('detail'), 'view', 'current')
     setActive(document.getElementById('second'), 'menu-item', 'active')
     setActive(document.getElementById('text-detail'), 'text-menu', 'text-active')
-}
+    chosenDo = carNumber.car.toString()
+    var pickupIcon = ""
+    console.log(chosenDo)
+    $.ajax({
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(key, value) {
+                if (value.car.toString() === chosenDo) {
+                    $("#vehicle-info").append(
+                        '<div class="row col-sm-12">' +
+                            '<div class="col-sm-3 logo-div">' +
+                                '<img src="images/green-car.png" class="car-logo">' +
+                                '<p class="number-text">' + value.car + '</p>' +
+                            '</div>' +
+                            '<div class="col-sm-3 time-div">' +
+                                '<p class="header-text z">Tider</p>' +
+                                '<p class="text z">'+ value.startNode.time +' - '+ value.stopNode.time +'</p>' +
+                                '<p class="header-text z">Senast uppdaterad:</p>' +
+                                '<p class="text z"><i class="fa fa-check-circle" aria-hidden="true"></i> '+ value.last_update +'</p>' + 
+                            '</div>' +
+                            '<div class="col-sm-3 contact-div list">' +
+                                '<p class="header-text z">Förare kontaktinfo</p>' +
+                                '<p class="text z">'+ value.driver_phone +'</p>' +
+                            '</div>' + 
+                            '<div class="col-sm-3 services-div list">' +
+                                '<p class="header-text z">Tillgängliga behov</p>' +
+                                '<div id="services" class="row services">' +
+                                    
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
+                    )
+                    
+                    $.each(value.services, function(x, y) {
+                        $("#services").append(
+                            '<div class="service">' +
+                                '<p class="service-text">'+ y.text +'</p>' +
+                            '</div>'
+                        )
+                        }                   
+                    )
+
+                    $.each(value.nodes, function(x, y) {
+                        if (y.action === 'pickup') {
+                            pickupIcon = '<i class="fa fa-sign-in x pick" aria-hidden="true"></i>'
+                        }
+                        if (y.action === 'dropoff') {
+                            pickupIcon = '<i class="fa fa-sign-out x drop" aria-hidden="true"></i>'
+                        }
+                        if (y.action !== 'coordinate') {
+                            $("#drive-order-detail").append(
+                                '<li class="row do ' + y.action + '">' +
+                                    '<div class="col-xs-12 order">' +
+                                        '<div class="col-xs-1 do-div do-text">1'+ pickupIcon +'</div>' +
+                                        '<div class="col-xs-1 do-div do-text">'+ y.time +'</div>' +
+                                        '<div class="col-xs-1 do-div do-text"></div>' +
+                                        '<div class="col-xs-2 do-div do-text x">'+ y.address + '</div>' +
+                                        '<div class="col-xs-2 do-div do-text"></div>' +
+                                        '<div class="col-xs-2 do-div do-text"></div>' +
+                                        '<div class="col-xs-1 do-div do-text x">'+ y.time + '</div>' +
+                                        '<div class="col-xs-1 do-div do-text"></div>' +
+                                    '</div>' +
+                                '</li>'
+                            )                           
+                        }
+                    })
+                }
+            });
+        },
+        url: '/do-info.json'
+    });   
+
+}        
+
 	// DO GET
 	// function specialVehicleAlertGet(){
     //     var t = new Date();
