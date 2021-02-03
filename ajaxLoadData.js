@@ -84,12 +84,6 @@ $(document).ready(function() {
                     }
                     if (y.action !== 'coordinate') {
                         previousNode = y
-                        // if (y.action = 'dropoff') {
-                        //     previousAction = "images/sign-in-alt-solid.png"
-                        // }
-                        // if (y.action = 'pickup') {
-                        //     previousAction = "images/sign-in-alt-solid-red.png"
-                        // }
                         return false
                     }                   
                 })
@@ -109,7 +103,6 @@ $(document).ready(function() {
                     
                     if (x === 0  && y.action === 'pickup') {
                         upComingAction = "images/sign-in-alt-solid.png"
-                        console.log('upcoming Action pickup')
                     } 
                     if (x === 0 && y.action === 'dropoff') {
                         upComingAction = "images/sign-in-alt-solid-red.png"
@@ -124,6 +117,10 @@ $(document).ready(function() {
 
                 var polylinePrevious = L.polyline(previousHalfHour, {className: value.car+'polyline polyline', color: 'green', weight: 7}).addTo(mymap);  
                 var polylineNext = L.polyline(nextHalfHour, {className: value.car+'polyline polyline', color: 'green', weight: 7, dashArray: '3, 10', dashOffset: '0'}).addTo(mymap);    
+
+                if (value.car === "123") {
+                    console.log(value.previousNodes[0].time)
+                }
                 
                 L.marker([value.lat, value.long], {icon: new L.DivIcon({
                     className: 'div-icon',

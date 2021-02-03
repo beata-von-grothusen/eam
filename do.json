@@ -601,8 +601,8 @@
         "status": "on-time",
         "time": "I tid",
         "vehicle_type": "special",
-        "lat": 57.626874,
-        "long": 18.282713,
+        "lat": 57.631868,       
+        "long": 18.28299,
         "previousNodes": [
             {
                 "action": "coordinate",
@@ -1584,17 +1584,6 @@
         ]    
     },
     {
-        "car": "199",
-        "start": "12:00",
-        "stop": "17:00",
-        "nodes": "10",
-        "status": "",
-        "time": "",
-        "vehicle_type": "standard",
-        "lat": "",
-        "long": ""
-    },
-    {
         "car": "345",
         "start": "09:00",
         "stop": "176:00",
@@ -1791,17 +1780,6 @@
                 }
             }
         ]    
-    },
-    {
-        "car": "156",
-        "start": "12:00",
-        "stop": "15:00",
-        "nodes": "8",
-        "status": "",
-        "time": "",
-        "vehicle_type": "standard",
-        "lat": "",
-        "long": ""
     },
     {
         "car": "188",
