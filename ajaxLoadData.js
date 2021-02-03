@@ -3,9 +3,7 @@ $(document).ready(function() {
     var vehicle_img = ""
     icon_type= ""
     var previousNode = {}
-    var previousAction = ""
-    var upComingAction = ""
-    var upComingAction2 = ""
+
     var mymap = L.map('mapid').setView([57.467053 , 18.487117], 10);
     var chosenDo = ""
 
@@ -34,6 +32,9 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             $.each(data, function(key, value) {
+                var previousAction = ""
+                var upComingAction = ""
+                var upComingAction2 = ""
                 var previousHalfHour = []
                 var nextHalfHour = []
                 var currentposition = [value.lat, value.long]
@@ -57,22 +58,21 @@ $(document).ready(function() {
                     vehicle_img = "images/green-car.png"
                     icon_type = "images/green-marker.png"
                 }
-                if (value.upComingNodes[0].action = 'pickup') {
-                    upComingAction = "images/sign-in-alt-solid-red.png"
-                } 
-                if (value.upComingNodes[0].action = 'dropoff') {
-                    upComingAction = "images/sign-in-alt-solid.png"
-                }
-                if (value.upComingNodes[1].action = 'pickup') {
-                    upComingAction2 = "images/sign-in-alt-solid-red.png"
-                } 
-                if (value.upComingNodes[1].action = 'dropoff') {
-                    upComingAction2 = "images/sign-in-alt-solid.png"
-                }
+
 
                 $.each(value.previousNodes, function(x, y) {
                     var pos = [y.lat, y.long]
                     previousHalfHour.push(pos)
+
+
+                    if (x === (value.previousNodes.length - 1) && y.action === 'pickup') {
+                        previousAction = "images/sign-in-alt-solid.png"
+                    }
+
+                    if (x === (value.previousNodes.length - 1) && y.action === 'dropoff') {
+                        previousAction = "images/sign-in-alt-solid-red.png"
+                    }
+
                     if (y.action === "dropoff") {
                         var dropoff = L.marker(pos, {icon: redIcon}).addTo(mymap)
                         $(dropoff._icon).addClass(value.car + 'marker polyline')
@@ -84,27 +84,42 @@ $(document).ready(function() {
                     }
                     if (y.action !== 'coordinate') {
                         previousNode = y
-                        if (y.action = 'dropoff') {
-                            previousAction = "images/sign-in-alt-solid.png"
-                        }
-                        if (y.action = 'pickup') {
-                            previousAction = "images/sign-in-alt-solid-red.png"
-                        }
+                        // if (y.action = 'dropoff') {
+                        //     previousAction = "images/sign-in-alt-solid.png"
+                        // }
+                        // if (y.action = 'pickup') {
+                        //     previousAction = "images/sign-in-alt-solid-red.png"
+                        // }
                         return false
                     }                   
                 })
 
                 $.each(value.upComingNodes, function(x, y) {
                     var pos = [y.lat, y.long]
+ 
                     nextHalfHour.push(pos) 
                     if (y.action === 'pickup') {
                         var pickup = L.marker(pos, {icon: greenIcon}).addTo(mymap)
                         $(pickup._icon).addClass(value.car + 'marker polyline')
                     }
                     if (y.action === 'dropoff') {
-                        var dropoff = L.marker(pos, {icon: greenIcon}).addTo(mymap)
+                        var dropoff = L.marker(pos, {icon: redIcon}).addTo(mymap)
                         $(dropoff._icon).addClass(value.car + 'marker polyline')
-                    }            
+                    }        
+                    
+                    if (x === 0  && y.action === 'pickup') {
+                        upComingAction = "images/sign-in-alt-solid.png"
+                        console.log('upcoming Action pickup')
+                    } 
+                    if (x === 0 && y.action === 'dropoff') {
+                        upComingAction = "images/sign-in-alt-solid-red.png"
+                    }
+                    if (x === 1 && y.action === 'pickup') {
+                        upComingAction2 = "images/sign-in-alt-solid.png"
+                    } 
+                    if (x === 1 && y.action === 'dropoff') {
+                        upComingAction2 = "images/sign-in-alt-solid-red.png"
+                    }
                 })
 
                 var polylinePrevious = L.polyline(previousHalfHour, {className: value.car+'polyline polyline', color: 'green', weight: 7}).addTo(mymap);  
