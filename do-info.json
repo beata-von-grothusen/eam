@@ -4,6 +4,80 @@
         "vehicle_type": "standard",
         "driver_phone": "0700009900",
         "last_update": "07:29",
+        "last_position": {
+            "lat": 57.621990, 
+            "long": 18.280591
+        },
+        "notifications": [
+            {
+                "time": "07:22:36",
+                "type": "new_trip",
+                "message": "Ny resa 09:10 från Torget",
+                "status": "OLÄST"
+            },
+            {
+                "time": "07:09:11",
+                "type": "aborted_trip",
+                "message": "Resa 12:30 borttagen",
+                "status": ""
+            },
+            {
+                "time": "07:09:09",
+                "type": "aborted_trip",
+                "message": "Resa 12:11 borttagen",
+                "status": ""
+            },
+            {
+                "time": "07:02:23",
+                "type": "new_message",
+                "message": "Meddelande från trafikledning",
+                "status": ""
+            },
+            {
+                "time": "07:01:15",
+                "type": "new_message",
+                "message": "Meddelande från trafikledning",
+                "status": ""
+            }
+        ],
+        "communication": [
+            {
+                "time": "07:02:24",
+                "status": "Meddelande mottaget",
+                "user": "System",
+                "message": ""
+            },
+            {
+                "time": "07:02:20",
+                "status": "Meddelande skickat",
+                "user": "Trafikledning",
+                "message": "Se till att resenärens rollator kommer med"
+            },
+            {
+                "time": "07:01:20",
+                "status": "Meddelande läst",
+                "user": "Förare",
+                "message": ""
+            },
+            {
+                "time": "07:00:10",
+                "status": "Förare checkat in",
+                "user": "Förare",
+                "message": ""
+            },
+            {
+                "time": "06:55:18",
+                "status": "Meddelande mottaget",
+                "user": "System",
+                "message": ""
+            },
+            {
+                "time": "06:55:15",
+                "status": "Meddelande skickat",
+                "user": "Trafikledning",
+                "message": "God morgon"
+            }
+        ],
         "services": [
             {
                 "uuid": "BAG",
@@ -49,13 +123,15 @@
         ],
         "startNode": {
             "time": "07:00",
-            "lat": 57.553874,
-            "long": 18.291507
+            "lat": 57.619066,
+            "long": 18.296984,
+            "address": "Jungmansgatan, Visby"
         },
         "stopNode": {
             "time": "17:00",
-            "lat": 57.553874,
-            "long": 18.291507
+            "lat": 57.619066,
+            "long": 18.296984,
+            "address": "Jungmansgatan, Visby"
         },
         "nodes": [
             {
@@ -63,84 +139,96 @@
                 "time": "07:15",
                 "address": "Bergmansgatan, Visby",
                 "lat": 57.628388,
-                "long": 18.290558
+                "long": 18.290558,
+                "nextNode": false
             },
             {
                 "action": "dropoff",
                 "time": "07:25",
                 "address": "Stenkumlaväg, Visby",
                 "lat": 57.624655,
-                "long": 18.285857
+                "long": 18.285857,
+                "nextNode": false
             },
             {
                 "action": "pickup",
                 "time": "07:30",
                 "address": "Färjeleden, Visby",
                 "lat": 57.634321,
-                "long": 18.282741
+                "long": 18.282741,
+                "nextNode": true
             },
             {
                 "action": "dropoff",
                 "time": "07:45",
                 "address": "S:t Olofs gränd, Visby",
                 "lat": 57.643108,
-                "long": 18.293239
+                "long": 18.293239,
+                "nextNode": false
             },
             {
                 "action": "pickup",
                 "time": "08:00",
                 "address": "Nygatan, Visby",
                 "lat": 57.644187, 
-                "long": 18.300883
+                "long": 18.300883,
+                "nextNode": false
             },
             {
                 "action": "dropoff",
                 "time": "08:15",
                 "address": "Drejaregatan, Vibble",
                 "lat": 57.601144, 
-                "long": 18.250882
+                "long": 18.250882,
+                "nextNode": false
             },
             {
                 "action": "pickup",
                 "time": "08:30",
                 "address": "Holger Rosmans väg",
                 "lat": 57.604514, 
-                "long": 18.225431
+                "long": 18.225431,
+                "nextNode": false
             },
             {
                 "action": "dropoff",
                 "time": "08:45",
                 "address": "Solbergaskolan, Visby",
                 "lat": 57.636196,
-                "long": 18.298954
+                "long": 18.298954,
+                "nextNode": false
             },
             {
                 "action": "pickup",
                 "time": "09:00",
                 "address": "Norra Hansegatan, Visby",
                 "lat": 57.644169,
-                "long": 18.314142
+                "long": 18.314142,
+                "nextNode": false
             },
             {
                 "action": "dropoff",
                 "time": "09:10",
                 "address": "Blåeldsvägen, Visby",
                 "lat": 57.611841, 
-                "long": 18.299482
+                "long": 18.299482,
+                "nextNode": false
             },
             {
                 "action": "pickup",
                 "time": "09:30",
                 "address": "Visborgsallén, Visby",
                 "lat": 57.611694, 
-                "long": 18.283004
+                "long": 18.283004,
+                "nextNode": false
             },
             {
                 "action": "dropoff",
                 "time": "09:45",
                 "address": "Vinkelgatan, Visby",
                 "lat": 57.619968,
-                "long": 18.285396
+                "long": 18.285396,
+                "nextNode": false
             }
         ]
     },

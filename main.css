@@ -237,6 +237,10 @@ p {
      z-index: -1;
  }
 
+ .car-image {
+    width: 40px !important;
+ }
+
  .div-image {
     width: 30px;
     position: absolute;
@@ -255,6 +259,18 @@ p {
      font-family: Arial, Helvetica, sans-serif !important;
      font-weight: bold !important;
  }
+
+ .destination-text {
+    position: absolute;
+    position: fixed;
+    z-index: 0;
+    bottom: -15px;
+    left: 10px;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: bold !important;
+}
 
  .line {
      padding-top: 7px;
@@ -340,15 +356,23 @@ p {
 
 .notifications {
     background-color: white;
-    height: 26vh;
+    height: 20vh;
     margin-top: 15px;
     border-right: 15px solid #F6F9FA;
 
 }
 
+.communication {
+    margin-top: 15px;
+    border-right: 15px solid #F6F9FA;
+    background-color: white;
+    height: 30vh;
+    overflow: scroll;
+}
+
 .map-small {
     background-color: white;
-    height: 54vh;
+    height: 52vh;
     margin-top: 15px;
 }
 
@@ -373,8 +397,19 @@ p {
     padding: 0 0 0 15px;
 }
 
-.fa-check-circle {
-    color: green
+.fa-check-circle, .fa-plus-circle, .fa-check-circle-o {
+    color: green;
+    margin-top: 3px;
+}
+
+.fa-times-circle {
+    color: red;
+    margin-top: 3px;
+}
+
+.fa-exclamation-circle {
+    color: #FFB90F;
+    margin-top: 3px;
 }
 
 .to-from {
@@ -428,6 +463,10 @@ p {
     padding-left: 25px !important
 }
 
+.v {
+    padding-left: 12px;
+}
+
 .pickup {
     background-color: rgba(231, 245, 231, .5);
 }
@@ -451,6 +490,13 @@ p {
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.com {
+    position: sticky;
+    background-color: white;
+    z-index: 1;
+    top: 0
 }
 
 .car-logo {
@@ -503,9 +549,69 @@ p {
 }
 
 .services {
-    padding-left: 15px;
+    padding-left: 12px;
     padding-top: 3px;
     display: flex;
     flex-wrap: wrap;
     width: 250px;
+}
+
+.fa-car {
+    font-size: 30px;
+    color: white;
+    padding-left: 8px;
+    margin-top: -5px;
+    position: absolute;
+    position: fixed;
+}
+
+.car-image {
+    font-size: 30px;   
+}
+
+.notifications-text {
+    font-size: 12px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+}
+
+.green-border {
+    border-top: 2px solid green;
+}
+
+.status {
+    font-weight: 500;
+    color: red;
+}
+
+.timeline {
+    border-left: 2px solid #FFB90F;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.event {
+    list-style-type: none;
+    padding-bottom: 15px;
+}
+
+.event-icon {
+    margin-left: -7px !important; 
+    padding-right: 5px;
+    background-color: white;
+}
+
+.bold {
+    font-weight: 500;
+    font-size: 12px
+}
+
+.r {
+    padding-left: 3px;
+    font-weight: normal;
+    padding-right: 15px;
+}
+
+.grey {
+    color: #6C6D6E
 }

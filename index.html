@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
+    <link rel="icon" href="images/drt-symbolen.svg" type="image/icon type">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
@@ -157,20 +158,7 @@
                                             <div class="header-text col-xs-1 x">Avg.</div>
                                             <div class="header-text col-xs-1 x">Utf.tid</div>
                                         </div>
-                                        <li class="row do">
-                                            <div class="col-xs-12 order">
-                                                <div class="col-xs-1 do-div do-text">1<i class="fa fa-dot-circle-o x" aria-hidden="true"></i></div>
-                                                <div class="col-xs-1 do-div do-text">07:00</div>
-                                                <div class="col-xs-1 do-div do-text">07:00</div>
-                                                <div class="col-xs-2 do-div do-text x">Skarphällsgatan, Visby</div>
-                                                <div class="col-xs-2 do-div do-text"></div>
-                                                <div class="col-xs-2 do-div do-text"></div>
-                                                <div class="col-xs-1 do-div do-text x">07:00</div>
-                                                <div class="col-xs-1 do-div do-text"></div>
-                                            </div>
 
-
-                                        </li>
                                                                        
                                     </ul>
                                 </div>
@@ -181,10 +169,22 @@
                                     
                                 </div>
                                 <div class="col-md-6 wrapper-small">
-                                    <div class="notifications"></div>
-                                    <div class="notifications"></div>
+                                    <div class="notifications">
+                                        <h5 class="info-header">Fordonsnotifieringar</h5>
+                                        <div id="notifications" class="row">
+                                
+
+                                        </div>
+                                    </div>
+                                    <div class="communication">
+                                        <h5 class="info-header com">Fordonskommunikation</h5>
+                                        <div id="communication">
+                                            <ul id="timeline" class="timeline">
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 map-small">
+                                <div class="col-md-6 map-small" id="map-small">
                                         
                                 </div>                                
                                 

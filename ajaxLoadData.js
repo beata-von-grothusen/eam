@@ -7,21 +7,17 @@ $(document).ready(function() {
     var upComingAction = ""
     var upComingAction2 = ""
     var mymap = L.map('mapid').setView([57.467053 , 18.487117], 10);
-    var t = new Date();
-    var hour = t.getHours()
-    var minutes = t.getMinutes()
-    var seconds = t.getSeconds()
-    var time = hour + ':' + minutes + ':' + seconds
     var chosenDo = ""
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiYmVhdGF2b25nIiwiYSI6ImNrazg1OHp2MzBqOWUydm1oc2oxeTM2bTYifQ.VcuLIamxk3o81B6Y18HVzQ'
     }).addTo(mymap);
+
+    
 
     var greenIcon = L.icon({
         iconUrl: 'images/sign-in-alt-solid.png',                
@@ -106,7 +102,7 @@ $(document).ready(function() {
                         $(pickup._icon).addClass(value.car + 'marker polyline')
                     }
                     if (y.action === 'dropoff') {
-                        var dropoff = L.marker(pos, {icon: redIcon}).addTo(mymap)
+                        var dropoff = L.marker(pos, {icon: greenIcon}).addTo(mymap)
                         $(dropoff._icon).addClass(value.car + 'marker polyline')
                     }            
                 })
@@ -282,13 +278,58 @@ function listClick(carNumber) {
     setActive(document.getElementById('second'), 'menu-item', 'active')
     setActive(document.getElementById('text-detail'), 'text-menu', 'text-active')
     chosenDo = carNumber.car.toString()
+    var node_number = ""
+    var previousNodes = []
+    var upComingNodes = []
     var pickupIcon = ""
-    console.log(chosenDo)
+    var icon_type = ""
+    var last_icon = ""
+    var next_icon = ""
+    var next_node_number = ""
     $.ajax({
         dataType: 'json',
         success: function(data) {
             $.each(data, function(key, value) {
                 if (value.car.toString() === chosenDo) {
+                    if (value.vehicle_type === "standard") {
+                        icon_type = "images/green-marker.png"
+                    }
+                    if (value.vehicle_type === "special") {
+                        icon_type="images/green-marker.png"
+                    }
+                    var map_s = L.map('map-small').setView([value.last_position.lat , value.last_position.long], 15);
+                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        tileSize: 512,
+                        zoomOffset: -1,
+                        accessToken: 'pk.eyJ1IjoiYmVhdGF2b25nIiwiYSI6ImNrazg1OHp2MzBqOWUydm1oc2oxeTM2bTYifQ.VcuLIamxk3o81B6Y18HVzQ'
+                    }).addTo(map_s);
+                    
+
+                   
+                    
+
+
+                    
+
+
+                
+                
+                    $('#drive-order-detail').append(
+                    '<li class="row do">' +
+                        '<div class="col-xs-12 order">' +
+                            '<div class="col-xs-1 do-div do-text">1<i class="fa fa-dot-circle-o x" aria-hidden="true"></i></div>' +
+                            '<div class="col-xs-1 do-div do-text">'+ value.startNode.time +'</div>' +
+                            '<div class="col-xs-1 do-div do-text">07:00</div>' +
+                            '<div class="col-xs-2 do-div do-text x">'+ value.startNode.address +'</div>'+
+                            '<div class="col-xs-2 do-div do-text"></div>' +
+                            '<div class="col-xs-2 do-div do-text"></div>' +
+                            '<div class="col-xs-1 do-div do-text x">07:00</div>' +
+                            '<div class="col-xs-1 do-div do-text"></div>' +
+                        '</div>' +
+                    '</li>' 
+                    )
                     $("#vehicle-info").append(
                         '<div class="row col-sm-12">' +
                             '<div class="col-sm-3 logo-div">' +
@@ -314,6 +355,7 @@ function listClick(carNumber) {
                         '</div>'
                     )
                     
+                    
                     $.each(value.services, function(x, y) {
                         $("#services").append(
                             '<div class="service">' +
@@ -323,7 +365,10 @@ function listClick(carNumber) {
                         }                   
                     )
 
+
                     $.each(value.nodes, function(x, y) {
+                        node_number = (x+2).toString()
+
                         if (y.action === 'pickup') {
                             pickupIcon = '<i class="fa fa-sign-in x pick" aria-hidden="true"></i>'
                         }
@@ -332,9 +377,9 @@ function listClick(carNumber) {
                         }
                         if (y.action !== 'coordinate') {
                             $("#drive-order-detail").append(
-                                '<li class="row do ' + y.action + '">' +
+                                '<li id="'+ x +'" class="row do ' + y.action + '">' +
                                     '<div class="col-xs-12 order">' +
-                                        '<div class="col-xs-1 do-div do-text">1'+ pickupIcon +'</div>' +
+                                        '<div class="col-xs-1 do-div do-text">' + node_number + pickupIcon +'</div>' +
                                         '<div class="col-xs-1 do-div do-text">'+ y.time +'</div>' +
                                         '<div class="col-xs-1 do-div do-text"></div>' +
                                         '<div class="col-xs-2 do-div do-text x">'+ y.address + '</div>' +
@@ -346,6 +391,100 @@ function listClick(carNumber) {
                                 '</li>'
                             )                           
                         }
+                        
+
+                        if (y.nextNode) {
+
+                            var element = document.getElementById(x)
+                            element.classList.add("green-border")
+
+                            L.polyline([[value.nodes[x-1].lat , value.nodes[x-1].long], [value.last_position.lat , value.last_position.long]], {className: 'polyline_s', color: 'green', weight: 7, dashOffset: '0'}).addTo(map_s);
+                            L.polyline([[value.last_position.lat , value.last_position.long], [y.lat , y.long]], {className: 'polyline_s', color: 'green', weight: 7, dashArray: '3, 10', dashOffset: '0'}).addTo(map_s);
+                            
+                            L.marker([value.last_position.lat , value.last_position.long], {icon: new L.DivIcon({
+                                className: 'car-icon',
+                                html: 
+                                '<div>' +
+                                    '<img class="div-image car-image" src=' + icon_type + '>' +
+                                        '<i class="fa fa-car fa-2x" aria-hidden="true"></i>' + 
+                                    '</img>' +
+                                '</div>'
+                                })
+                            }).addTo(map_s);
+                            L.marker([y.lat , y.long], {icon: new L.DivIcon({
+                                className: 'div-icon',
+                                html: 
+                                '<div>' +
+                                    '<img class="div-image" src="images/green-marker.png">' +
+                                        '<div class="destination-text">'+ (x+2).toString() +'</div>' + 
+                                    '</img>' +
+                                '</div>'
+                                })
+                            }).addTo(map_s);  
+                            L.marker([value.nodes[x-1].lat , value.nodes[x-1].long], {icon: new L.DivIcon({
+                                className: 'div-icon',
+                                html: 
+                                '<div>' +
+                                    '<img class="div-image" src="images/oval-red.png">' +
+                                        '<div class="destination-text">'+ (x+1).toString() +'</div>' + 
+                                    '</img>' +
+                                '</div>'
+                                })
+                            }).addTo(map_s);
+                        }
+
+
+
+ 
+                    })
+                    $('#drive-order-detail').append(
+                        '<li class="row do">' +
+                            '<div class="col-xs-12 order">' +
+                                '<div class="col-xs-1 do-div do-text"><i class="fa fa-dot-circle-o x" aria-hidden="true"></i></div>' +
+                                '<div class="col-xs-1 do-div do-text">'+ value.stopNode.time +'</div>' +
+                                '<div class="col-xs-1 do-div do-text"></div>' +
+                                '<div class="col-xs-2 do-div do-text x">'+ value.stopNode.address +'</div>'+
+                                '<div class="col-xs-2 do-div do-text"></div>' +
+                                '<div class="col-xs-2 do-div do-text"></div>' +
+                                '<div class="col-xs-1 do-div do-text x"></div>' +
+                                '<div class="col-xs-1 do-div do-text"></div>' +
+                            '</div>' +
+                        '</li>' 
+                        )
+                       
+                    $.each(value.notifications, function(x, y) {
+                        var icon = ""
+                        if (y.type === "new_trip") {
+                            icon = '<i class="col-sm-1 fas fa-plus-circle"></i>'
+                        }
+                        if (y.type === "aborted_trip") {
+                            icon = '<i class="col-sm-1 fas fa-times-circle"></i>'
+                        }
+                        if (y.type === "new_message") {
+                            icon = '<i class="col-sm-1 fas fa-exclamation-circle"></i>'
+                        }
+                        $('#notifications').append(
+                            '<div class="notifications-text z">'+ icon + ' ' + y.time + ', ' + y.message + ' <span class="status">' + y.status + '</span>' +'</div>'
+                        )
+                    }) 
+                    
+                    $.each(value.communication, function(x, y) {
+                        var icon = '<i class="event-icon fas fa-check-circle"></i>'
+                        if (y.status === "Meddelande läst") {
+                            icon = '<i class="event-icon fas fa-check-circle"></i>'
+                        }
+                        if (y.status === "Meddelande skickat") {
+                            icon = '<i class="event-icon grey fa fa-check-circle-o"></i>'
+                        }
+                        if (y.status === "Meddelande mottaget") {
+                            icon = '<i class="event-icon fa fa-check-circle-o"></i>'
+                        } 
+                        $('#timeline').append(
+                            '<li class="event">' +                                                
+                                '<p>' + icon + '<span class="bold">'+ y.time +' Status:</span><span class="notifications-text r">'+ y.status +'</span></p>' +
+                                '<p class="bold v">Användare: <span class="notifications-text r">'+ y.user +'</span></p>' +
+                            '</li>'
+                        )
                     })
                 }
             });
