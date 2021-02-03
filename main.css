@@ -18,6 +18,7 @@
 
 .body {
     padding: 0;
+    height: 100vh;
 }
 
 .main {
@@ -122,7 +123,7 @@ input {
 
 .do-list {
     background-color: white;
-    height: 70vh;
+    height: 77vh;
     padding: 0;
     border-right: 15px solid #F6F9FA;
     overflow: scroll;
@@ -130,12 +131,12 @@ input {
 
 .map {
     background-color: white;
-    height: 70vh;
+    height: 77vh;
     padding: 0;
 }
 
 #mapid {
-    height: 70vh;
+    height: 77vh;
 }
 
 .column {
@@ -167,7 +168,7 @@ input {
 }
 
 .car-header {
-    padding-left: 10px;
+    padding-left: 20px;
     border-bottom: 1px solid grey;
     margin: 0;
     background-color: white;
@@ -181,7 +182,7 @@ input {
 }
 
 .car-div {
-    padding-left: 0;
+    margin-left: -25px !important;
     align-items: center;
     align-content: center;
     text-align: center;
@@ -335,7 +336,7 @@ p {
 
  .trips-list {
     background-color: white;
-    height: 70vh;
+    height: 77vh;
     border-right: 15px solid #F6F9FA;
     padding: 0;
     overflow: scroll;
@@ -366,13 +367,13 @@ p {
     margin-top: 15px;
     border-right: 15px solid #F6F9FA;
     background-color: white;
-    height: 30vh;
+    height: 42.5vh;
     overflow: scroll;
 }
 
 .map-small {
     background-color: white;
-    height: 52vh;
+    height: 64vh;
     margin-top: 15px;
 }
 
@@ -461,6 +462,10 @@ p {
 
 .xy {
     padding-left: 25px !important
+}
+
+.xyz {
+    padding-left: 1vw !important
 }
 
 .v {
@@ -576,6 +581,8 @@ p {
 }
 
 .green-border {
+    
+    border: 1px solid grey;
     border-top: 2px solid green;
 }
 
@@ -612,6 +619,17 @@ p {
     padding-right: 15px;
 }
 
+.t {
+    margin-left: 0.3vw;
+}
+
+
+
 .grey {
+    color: #6C6D6E
+}
+
+.pastGreen, .pastRed {
+    background-color: #F6F9FA;
     color: #6C6D6E
 }

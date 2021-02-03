@@ -51,7 +51,7 @@
                 "time": "07:02:20",
                 "status": "Meddelande skickat",
                 "user": "Trafikledning",
-                "message": "Se till att resenärens rollator kommer med"
+                "message": "Hej hej"
             },
             {
                 "time": "07:01:20",
@@ -125,13 +125,15 @@
             "time": "07:00",
             "lat": 57.619066,
             "long": 18.296984,
-            "address": "Jungmansgatan, Visby"
+            "address": "Jungmansgatan, Visby",
+            "departure": "07:01"
         },
         "stopNode": {
             "time": "17:00",
             "lat": 57.619066,
             "long": 18.296984,
-            "address": "Jungmansgatan, Visby"
+            "address": "Jungmansgatan, Visby",
+            "departure": ""
         },
         "nodes": [
             {
@@ -140,7 +142,11 @@
                 "address": "Bergmansgatan, Visby",
                 "lat": 57.628388,
                 "long": 18.290558,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "07:14",
+                "departure_time": "07:15",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -148,7 +154,11 @@
                 "address": "Stenkumlaväg, Visby",
                 "lat": 57.624655,
                 "long": 18.285857,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "07:26",
+                "departure_time": "07:27",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "pickup",
@@ -156,7 +166,11 @@
                 "address": "Färjeleden, Visby",
                 "lat": 57.634321,
                 "long": 18.282741,
-                "nextNode": true
+                "nextNode": true,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -164,7 +178,11 @@
                 "address": "S:t Olofs gränd, Visby",
                 "lat": 57.643108,
                 "long": 18.293239,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "pickup",
@@ -172,7 +190,11 @@
                 "address": "Nygatan, Visby",
                 "lat": 57.644187, 
                 "long": 18.300883,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -180,7 +202,11 @@
                 "address": "Drejaregatan, Vibble",
                 "lat": 57.601144, 
                 "long": 18.250882,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "pickup",
@@ -188,7 +214,11 @@
                 "address": "Holger Rosmans väg",
                 "lat": 57.604514, 
                 "long": 18.225431,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -196,7 +226,11 @@
                 "address": "Solbergaskolan, Visby",
                 "lat": 57.636196,
                 "long": 18.298954,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "pickup",
@@ -204,7 +238,11 @@
                 "address": "Norra Hansegatan, Visby",
                 "lat": 57.644169,
                 "long": 18.314142,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -212,7 +250,11 @@
                 "address": "Blåeldsvägen, Visby",
                 "lat": 57.611841, 
                 "long": 18.299482,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "pickup",
@@ -220,7 +262,11 @@
                 "address": "Visborgsallén, Visby",
                 "lat": 57.611694, 
                 "long": 18.283004,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             },
             {
                 "action": "dropoff",
@@ -228,7 +274,11 @@
                 "address": "Vinkelgatan, Visby",
                 "lat": 57.619968,
                 "long": 18.285396,
-                "nextNode": false
+                "nextNode": false,
+                "arrival_time": "",
+                "departure_time": "",
+                "traveller_name": "Hej Hejsson",
+                "traveller_number": "HH1234"
             }
         ]
     },

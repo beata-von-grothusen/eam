@@ -4,8 +4,10 @@ $(document).ready(function() {
     icon_type= ""
     var previousNode = {}
 
-    var mymap = L.map('mapid').setView([57.467053 , 18.487117], 10);
-    var chosenDo = ""
+    var mymap = L.map('mapid', {
+        fullscreenControl: true
+    }
+    ).setView([57.467053 , 18.487117], 10);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         maxZoom: 18,
@@ -14,6 +16,13 @@ $(document).ready(function() {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiYmVhdGF2b25nIiwiYSI6ImNrazg1OHp2MzBqOWUydm1oc2oxeTM2bTYifQ.VcuLIamxk3o81B6Y18HVzQ'
     }).addTo(mymap);
+
+    // mymap.addControl(new L.Control.Fullscreen({
+    //     title: {
+    //         'false': 'View Fullscreen',
+    //         'true': 'Exit Fullscreen'
+    //     }
+    // }));
 
     
 
@@ -48,8 +57,8 @@ $(document).ready(function() {
                     time_indicator = "<img src='images/pink-oval.png' class='oval'>"
                     indicator_strong = "<img src='images/red-oval.png' class='oval'>"
                 }
-                if (value.status === "") {
-                    time_indicator = ""
+                if (value.status === "no-update") {
+                    time_indicator = "<img src='images/white-oval.png' class='oval'>"
                 }
                 if (value.vehicle_type === 'special') {
                     vehicle_img = "images/purple-car.png"
@@ -117,10 +126,6 @@ $(document).ready(function() {
 
                 var polylinePrevious = L.polyline(previousHalfHour, {className: value.car+'polyline polyline', color: 'green', weight: 7}).addTo(mymap);  
                 var polylineNext = L.polyline(nextHalfHour, {className: value.car+'polyline polyline', color: 'green', weight: 7, dashArray: '3, 10', dashOffset: '0'}).addTo(mymap);    
-
-                if (value.car === "123") {
-                    console.log(value.previousNodes[0].time)
-                }
                 
                 L.marker([value.lat, value.long], {icon: new L.DivIcon({
                     className: 'div-icon',
@@ -128,7 +133,7 @@ $(document).ready(function() {
                     '<div class="hover-popup hide ' + value.car + '">' + 
                         '<div class="col-sm-12">' +
                             '<div class="row">' +
-                                '<p class="col-sm-9 text-popup bold">Senast uppdaterad: </p><p class="col-sm-3 text-popup green bold">'+ value.previousNodes[0].time + '</p>' +
+                                '<p class="col-sm-9 text-popup bold">Senast uppdaterad:  </p><p class="col-sm-3 text-popup green bold">'+ value.previousNodes[0].time + '</p>' +
                             '</div>' +
                             '<div class="row col-sm-12 list">' +
                                 '<div class="col-sm-1 time">' +
@@ -183,24 +188,32 @@ $(document).ready(function() {
                 })} ).addTo(mymap);
 
                 var detail=document.getElementById('detail')
+                var type = ""
+                if (value.previousNodes[0].action === 'dropoff') {
+                    console.log(value.action)
+                    type = 'Resenär lämnad'
+                }
+                if (value.previousNodes[0].action === 'pickup') {
+                    type = 'Resenär hämtad'
+                }
+                if (value.previousNodes[0].action === 'coordinate') {
+                    type = 'Koordinat'
+                }
                 
                 $("#drive-order-list").append(
                     "<li onmouseover='showPopup("+ value.car +"); showPolyline("+ value.car +")' onmouseout='removePolyline("+ value.car +"); removePopup("+ value.car +")'; onclick='listClick(" + JSON.stringify(value) + ");' class='car listitem" + value.car + "'>" + 
                         "<div class='row'>" + 
-                            "<div class='car-div col-xs-3'>" + 
+                            "<div class='car-div col-xs-4'>" + 
                                 "<img src=" + vehicle_img + " class='car-img'>" + 
-                                    "<p class='car-number'>" + value.car + "</p>" + 
+                                "<p class='car-number'>" + value.car + "</p>" + 
                             "</div>" +
-                            "<div class='col-xs-2 info-div'>" + 
-                                "<p class='text'>" + value.start + "</p>" + 
+                            "<div class='col-xs-3 info-div'>" + 
+                                "<p class='text'>" + value.previousNodes[0].time + "</p>" + 
                             "</div>" + 
-                            "<div class='col-xs-2 info-div'>" + 
-                                "<p class='text'>" + value.stop + "</p>" +
+                            "<div class='col-xs-3 info-div'>" + 
+                                "<p class='text'>" + type + "</p>" +
                             "</div>" +
-                            "<div class='col-xs-2 info-div'>" + 
-                                "<p class='text'>" + value.nodes + "</p>" + 
-                            "</div>" + 
-                            "<div class='col-xs-3 car-div'>" + 
+                            "<div class='col-xs-3 car-div xyz'>" + 
                                 time_indicator + 
                                 "<p class='minutes'>" +  
                                     value.time + 
@@ -317,28 +330,18 @@ function listClick(carNumber) {
                         zoomOffset: -1,
                         accessToken: 'pk.eyJ1IjoiYmVhdGF2b25nIiwiYSI6ImNrazg1OHp2MzBqOWUydm1oc2oxeTM2bTYifQ.VcuLIamxk3o81B6Y18HVzQ'
                     }).addTo(map_s);
-                    
-
-                   
-                    
-
-
-                    
-
-
-                
-                
+                                  
                     $('#drive-order-detail').append(
                     '<li class="row do">' +
                         '<div class="col-xs-12 order">' +
                             '<div class="col-xs-1 do-div do-text">1<i class="fa fa-dot-circle-o x" aria-hidden="true"></i></div>' +
                             '<div class="col-xs-1 do-div do-text">'+ value.startNode.time +'</div>' +
-                            '<div class="col-xs-1 do-div do-text">07:00</div>' +
+                            '<div class="col-xs-1 do-div do-text">' + value.startNode.departure + '</div>' +
                             '<div class="col-xs-2 do-div do-text x">'+ value.startNode.address +'</div>'+
                             '<div class="col-xs-2 do-div do-text"></div>' +
                             '<div class="col-xs-2 do-div do-text"></div>' +
-                            '<div class="col-xs-1 do-div do-text x">07:00</div>' +
-                            '<div class="col-xs-1 do-div do-text"></div>' +
+                            '<div class="col-xs-1 do-div do-text x">' + value.startNode.time + '</div>' +
+                            '<div class="col-xs-1 do-div do-text v">' + value.startNode.departure + '</div>' +
                         '</div>' +
                     '</li>' 
                     )
@@ -381,6 +384,7 @@ function listClick(carNumber) {
                     $.each(value.nodes, function(x, y) {
                         node_number = (x+2).toString()
 
+
                         if (y.action === 'pickup') {
                             pickupIcon = '<i class="fa fa-sign-in x pick" aria-hidden="true"></i>'
                         }
@@ -389,21 +393,29 @@ function listClick(carNumber) {
                         }
                         if (y.action !== 'coordinate') {
                             $("#drive-order-detail").append(
-                                '<li id="'+ x +'" class="row do ' + y.action + '">' +
+                                '<li id="'+ x +'" class="row do ' + y.action + '">' + 
                                     '<div class="col-xs-12 order">' +
                                         '<div class="col-xs-1 do-div do-text">' + node_number + pickupIcon +'</div>' +
                                         '<div class="col-xs-1 do-div do-text">'+ y.time +'</div>' +
-                                        '<div class="col-xs-1 do-div do-text"></div>' +
+                                        '<div class="col-xs-1 do-div do-text">'+ y.arrival_time +'</div>' +
                                         '<div class="col-xs-2 do-div do-text x">'+ y.address + '</div>' +
-                                        '<div class="col-xs-2 do-div do-text"></div>' +
+                                        '<div class="col-xs-2 do-div do-text xy">' + y.traveller_name + ' ' + y.traveller_number + '</div>' +
                                         '<div class="col-xs-2 do-div do-text"></div>' +
                                         '<div class="col-xs-1 do-div do-text x">'+ y.time + '</div>' +
-                                        '<div class="col-xs-1 do-div do-text"></div>' +
+                                        '<div class="col-xs-1 do-div do-text v">' + y.departure_time + '</div>' +
                                     '</div>' +
                                 '</li>'
                             )                           
                         }
                         
+                        if (y.departure_time !== "" && y.action === 'pickup') {
+                            var element = document.getElementById(x)
+                            element.classList.add('pastGreen')
+                        }
+                        if (y.departure_time !== "" && y.action === 'dropoff') {
+                            var element = document.getElementById(x)
+                            element.classList.add('pastRed')
+                        }
 
                         if (y.nextNode) {
 
@@ -481,6 +493,7 @@ function listClick(carNumber) {
                     }) 
                     
                     $.each(value.communication, function(x, y) {
+                        var message = ""
                         var icon = '<i class="event-icon fas fa-check-circle"></i>'
                         if (y.status === "Meddelande läst") {
                             icon = '<i class="event-icon fas fa-check-circle"></i>'
@@ -491,12 +504,20 @@ function listClick(carNumber) {
                         if (y.status === "Meddelande mottaget") {
                             icon = '<i class="event-icon fa fa-check-circle-o"></i>'
                         } 
+                        if (y.message !== "") {
+                            message = '<p class="bold v">Meddelande: <span class="notifications-text r">'+ y.message +'</span></p>'
+                        }
+                        
                         $('#timeline').append(
-                            '<li class="event">' +                                                
+                            '<li id="event" class="event">' +                                                
                                 '<p>' + icon + '<span class="bold">'+ y.time +' Status:</span><span class="notifications-text r">'+ y.status +'</span></p>' +
-                                '<p class="bold v">Användare: <span class="notifications-text r">'+ y.user +'</span></p>' +
+                                '<p class="bold v">Användare: <span class="notifications-text r">'+ y.user +'</span></p>' 
+                                + message +                            
                             '</li>'
+                            
                         )
+
+                        
                     })
                 }
             });
